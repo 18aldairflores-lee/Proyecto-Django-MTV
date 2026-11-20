@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComunidadConectada - Servicios</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 2rem; }
+        .container { max-width: 800px; margin: auto; }
+        h1 { color: #38bdf8; border-bottom: 2px solid #1e293b; padding-bottom: 0.5rem; }
+        .card { background: #1e293b; padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid #38bdf8; }
+        .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.8rem; font-weight: bold; }
+        .activo { background: #065f46; color: #6ee7b7; }
+        .inactivo { background: #7f1d1d; color: #fca5a5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Servicios Comunitarios</h1>
+        {% for s in servicios %}
+            <div class="card">
+                <h2>{{ s.titulo }}</h2>
+                <p>{{ s.descripcion }}</p>
+                {% if s.activo %}
+                    <span class="badge activo">Activo</span>
+                {% else %}
+                    <span class="badge inactivo">Inactivo</span>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No hay servicios registrados aún. Agrégalos desde el panel <strong>/admin</strong>.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
