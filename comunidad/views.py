@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from .models import Servicio
 from .forms import ServicioForm
 
 def hola_mundo(request):
-    return HttpResponse("<h1>¡Hola Mundo desde Django!</h1><p>Aplicación ComunidadConectada funcionando.</p>")
+    return render(request, 'comunidad/hola.html')
 
 def listar_servicios(request):
     items = Servicio.objects.all().order_by('-id')
